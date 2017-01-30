@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild, OnInit } from '@angular/core';
 import { PageService } from '../shared/page.service'
 import{ PageModel } from '../../'
-import { Router, ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 @Component({
   selector: 'app-list-page',
   templateUrl: './list-page.component.html',
@@ -9,8 +10,8 @@ import { Router, ActivatedRoute} from '@angular/router';
 })
 export class ListPageComponent implements OnInit {
 
-  constructor(private getPageService: PageService, private router:Router,
-  private route : ActivatedRoute) { }
+  
+  constructor(private getPageService: PageService, private router : Router) { }
   pages:PageModel[];
   //private getPageService: PageService = new PageService
   ngOnInit() {
@@ -20,10 +21,42 @@ export class ListPageComponent implements OnInit {
   getPages(){
     this.getPageService.getPages().then(pages => this.pages = pages)
   }
-  goToEdit(id:number)
-  {
-    this.router.navigate(['./',id], {relativeTo: this.route});
-  }
+  @ViewChild('modal')
+    modal: ModalComponent;
+    items: string[] = ['item1', 'item2', 'item3'];
+    selected: string;
+    output: string;
+
+    index: number = 0;
+    backdropOptions = [true, false, 'static'];
+    cssClass: string = '';
+
+    animation: boolean = true;
+    keyboard: boolean = true;
+    backdrop: string | boolean = true;
+    css: boolean = false;
+   
+
+
+    closed() {
+        this.output = '(closed) ' + this.selected;
+    }
+
+    dismissed() {
+        this.output = '(dismissed)';
+    }
+
+    opened() {
+        this.output = '(opened)';
+    }
+
+    navigate() {
+        this.router.navigateByUrl('/hello');
+    }
+    open() {
+        this.modal.open();
+    }
+
 
 
 }

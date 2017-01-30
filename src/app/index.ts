@@ -5,3 +5,5 @@ export { ListPageComponent } from './pages/list-page/list-page.component';
 export { PageModel } from './pages/shared/page.model';
 export { PageService } from './pages/shared/page.service';
 export { AboutusComponent } from './pages/aboutus/aboutus.component';
+export { EditdataComponent } from './pages/list-page/editdata/editdata.component';
+export { CreateComponent } from './pages/list-page/create/create.component';
