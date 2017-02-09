@@ -3,15 +3,19 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Title</th>
-        <th>Content</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let page of pages">
-          <td *ngIf="page.id == id"><input type="text" value="{{page.id}}" disabled="disabled"></td>
-          <td *ngIf="page.id == id"><input type="text" value="{{page.title}}"></td>
-          <td *ngIf="page.id == id"><input type="text" value="{{page.content}}"></td>
+      <tr *ngFor="let page of data">
+          <td *ngIf="page.StdID == id"><input type="text" value="{{page.StdID}}" disabled="disabled"></td>
+          <td *ngIf="page.StdID == id"><input type="text" value="{{page.StdName}}"></td>
+          <td *ngIf="page.StdID == id"><input type="text" value="{{page.Email}}"></td>
+          <td *ngIf="page.StdID == id"><input type="text" value="{{page.Phone}}"></td>
+          <td *ngIf="page.StdID == id"><input type="text" value="{{page.Address}}"></td>
       </tr>
     </tbody>
   </table>

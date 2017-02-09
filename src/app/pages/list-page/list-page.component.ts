@@ -2,8 +2,8 @@ import { Component,ViewChild, OnInit } from '@angular/core';
 import { PageService } from '../shared/page.service'
 import{ PageModel } from '../../'
 import { Router } from '@angular/router';
-import { Http, Response, Headers,URLSearchParams } from '@angular/http';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { Http, Response } from '@angular/http';
 @Component({
   selector: 'app-list-page',
   templateUrl: './list-page.component.html',
@@ -11,22 +11,21 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 })
 export class ListPageComponent implements OnInit {
 
-  
-  constructor(private getPageService: PageService, private router : Router, public http: Http) { }
-  result:any[];
+  data;
+  constructor(private getPageService: PageService, private router : Router, public http:Http) {
+      this.http.get('http://localhost:15273/api/values')
+                .subscribe(res => this.data = res.json());
+   }
   //private getPageService: PageService = new PageService
   
 
   ngOnInit() {
-  this.getPages();
+  //this.getPages();
   }
 
-  getPages(){
-    this.getPageService.getData().subscribe((data) => {
-    console.log("what is in the data ", data);
-    this.result = data;
-    });
-  }
+//   getPages(){
+//     this.result = this.getPageService.getData()
+//   }
 //   @ViewChild('modal')
 //     modal: ModalComponent;
 //     items: string[] = ['item1', 'item2', 'item3'];
