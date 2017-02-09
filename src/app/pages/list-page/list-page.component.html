@@ -1,28 +1,27 @@
 <div class='title'>
   <div>
-    <button class="btn btn-info" routerLink='/pages/create' routerLinkActive='active'>Create</button><br><br>
-    <button type="button" class="btn btn-default" (click)="modal.open()">Open me!</button>
+    <button type="button" class="btn btn-info" (click)="modal.open()">Create</button>
   </div>
   <table class='table'>
     <thead>
       <tr>
         <th>ID</th>
-        <th>Title</th>
+        <!--<th>Title</th>
         <th>Content</th>
-        <th>Action</th>
+        <th>Action</th>-->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let page of pages">
-        <td>{{page.id}}</td>
-        <td>{{page.title}}</td>
+      <tr *ngFor="let page of result">
+        <td>{{page.StdID}}</td>
+        <!--<td>{{page.title}}</td>
         <td>{{page.content}}</td>
-        <td><button routerLink='/pages/{{page.id}}' routerLinkActive='active'>Edit</button></td>
+        <td><button routerLink='/pages/{{page.id}}' routerLinkActive='active' class="btn btn-danger">Edit</button></td>-->
       </tr>
     </tbody>
   </table>
 </div>
-<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
+<!--<modal (onClose)="closed()" (onDismiss)="dismissed()"
   (onOpen)="opened()" [cssClass]="cssClass" #modal>
   <modal-header [show-close]="true">
     <h4 class="modal-title">I'm a modal!</h4>
@@ -36,4 +35,4 @@
     <p *ngIf="selected">Selected: <b>{{ selected }}</b></p>
   </modal-body>
   <modal-footer [show-default-buttons]="true"></modal-footer>
-</modal>
+</modal>-->

@@ -2,6 +2,7 @@ import { Component,ViewChild, OnInit } from '@angular/core';
 import { PageService } from '../shared/page.service'
 import{ PageModel } from '../../'
 import { Router } from '@angular/router';
+import { Http, Response, Headers,URLSearchParams } from '@angular/http';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 @Component({
   selector: 'app-list-page',
@@ -11,51 +12,56 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 export class ListPageComponent implements OnInit {
 
   
-  constructor(private getPageService: PageService, private router : Router) { }
-  pages:PageModel[];
+  constructor(private getPageService: PageService, private router : Router, public http: Http) { }
+  result:any[];
   //private getPageService: PageService = new PageService
+  
+
   ngOnInit() {
-    this.getPages();
+  this.getPages();
   }
 
   getPages(){
-    this.getPageService.getPages().then(pages => this.pages = pages)
+    this.getPageService.getData().subscribe((data) => {
+    console.log("what is in the data ", data);
+    this.result = data;
+    });
   }
-  @ViewChild('modal')
-    modal: ModalComponent;
-    items: string[] = ['item1', 'item2', 'item3'];
-    selected: string;
-    output: string;
+//   @ViewChild('modal')
+//     modal: ModalComponent;
+//     items: string[] = ['item1', 'item2', 'item3'];
+//     selected: string;
+//     output: string;
 
-    index: number = 0;
-    backdropOptions = [true, false, 'static'];
-    cssClass: string = '';
+//     index: number = 0;
+//     backdropOptions = [true, false, 'static'];
+//     cssClass: string = '';
 
-    animation: boolean = true;
-    keyboard: boolean = true;
-    backdrop: string | boolean = true;
-    css: boolean = false;
+//     animation: boolean = true;
+//     keyboard: boolean = true;
+//     backdrop: string | boolean = true;
+//     css: boolean = false;
    
 
 
-    closed() {
-        this.output = '(closed) ' + this.selected;
-    }
+//     closed() {
+//         this.output = '(closed) ' + this.selected;
+//     }
 
-    dismissed() {
-        this.output = '(dismissed)';
-    }
+//     dismissed() {
+//         this.output = '(dismissed)';
+//     }
 
-    opened() {
-        this.output = '(opened)';
-    }
+//     opened() {
+//         this.output = '(opened)';
+//     }
 
-    navigate() {
-        this.router.navigateByUrl('/hello');
-    }
-    open() {
-        this.modal.open();
-    }
+//     navigate() {
+//         this.router.navigateByUrl('/hello');
+//     }
+//     open() {
+//         this.modal.open();
+//     }
 
 
 
