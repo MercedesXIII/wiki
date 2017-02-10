@@ -3,7 +3,7 @@ import { PageService } from '../shared/page.service'
 import{ PageModel } from '../../'
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { Http, Response } from '@angular/http';
+import { Http, Response ,Headers,URLSearchParams} from '@angular/http';
 @Component({
   selector: 'app-list-page',
   templateUrl: './list-page.component.html',
@@ -13,14 +13,22 @@ export class ListPageComponent implements OnInit {
 
   data;
   constructor(private getPageService: PageService, private router : Router, public http:Http) {
-      this.http.get('http://localhost:15273/api/values')
-                .subscribe(res => this.data = res.json());
-   }
+    //POST
+      // let headers = new Headers({ 'Content-Type': 'application/json' });
+      // let body = "";
+      // this.http.post("http://localhost:15273/api/values",body,{
+			// headers: headers
+		  // }).subscribe((res: Response) => {
+			// let result = res.json();
+      // this.data = result;});
+    //GET
+      this.http.get('http://localhost:15273/api/values').subscribe(res => this.data = res.json());
+  }
   //private getPageService: PageService = new PageService
   
 
   ngOnInit() {
-  //this.getPages();
+    
   }
 
 //   getPages(){

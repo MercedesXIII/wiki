@@ -1,5 +1,7 @@
 export class PageModel {
-    id:number
-    title:String
-    content:String
+    StdID:number
+    StdName:String
+    Email:String
+    Phone:String
+    Address:String
 }
